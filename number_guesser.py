@@ -1,3 +1,7 @@
+tries = 0
+score = 0
+number = randint(0, 10)
+
 def on_button_pressed_a():
     global score
     score += 1
@@ -5,6 +9,7 @@ def on_button_pressed_a():
         score = 0
         basic.show_number(score)
     basic.show_number(score)
+input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_gesture_logo_down():
     global score, number
@@ -13,6 +18,7 @@ def on_gesture_logo_down():
     basic.show_string("Reset")
     basic.pause(1000)
     basic.clear_screen()
+input.on_gesture(Gesture.LOGO_DOWN, on_gesture_logo_down)
 
 def on_button_pressed_ab():
     global tries
@@ -39,10 +45,3 @@ def on_button_pressed_b():
     else:
         return on_button_pressed_a()
 input.on_button_pressed(Button.B, on_button_pressed_b)
-
-tries = 0
-score = 0
-number = 0
-input.on_gesture(Gesture.LOGO_DOWN, on_gesture_logo_down)
-number = randint(0, 10)
-input.on_button_pressed(Button.A, on_button_pressed_a)

@@ -24,13 +24,13 @@ def on_button_pressed_ab():
     global tries
     while tries < 3:
         if score == number:
-            basic.show_string("You have found the number")
+            basic.show_string(f"You have found the number. It took only {tries}. ")
         elif score >= number:
-            basic.show_string("The number is smaller")
+            basic.show_string(f"The number is smaller. You have {tries} left")
             tries += 1
             return on_button_pressed_a()
         else:
-            basic.show_string("The number is bigger")
+            basic.show_string(f"The number is bigger. You have {tries} left")
             tries += 1
             return on_button_pressed_a()
     basic.show_string("You've lost :(")

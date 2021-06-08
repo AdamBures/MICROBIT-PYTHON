@@ -1,18 +1,22 @@
-# TODO:
-# WORKING SECOND LEVEL SHOOTING
-# WORKING THIRD LEVEL
-# LEVEL CONSTANT
-# SCORE CONSTANT
-# ADD TIME CONSTANT
-# LOADING MENU
-# TEXT
-# PEP8 CONVENTION
+"""
+TODO:
+ ADD TIME CONSTANT
+ LOADING MENU
+ TEXT
+ Resetting level and ending game
+"""
+
+
 def second_level():
     first_level()
 
+
 def on_button_pressed_a():
     lod.move(-1)
+
+
 input.on_button_pressed(Button.A, on_button_pressed_a)
+
 
 def first_level():
     global lod, nepritel1, nepritel2, nepritel3, nepritel4, nepritel5
@@ -27,6 +31,7 @@ def first_level():
     nepritel4 = game.create_sprite(3, 1)
     basic.pause(200)
     nepritel5 = game.create_sprite(4, 0)
+
 
 def on_button_pressed_ab():
     global strela, hitbox, hitbox2, level, score
@@ -57,15 +62,21 @@ def on_button_pressed_ab():
         nepritel5.delete()
         score += 100
     strela.delete()
-    if nepritel1.is_deleted() and nepritel2.is_deleted() and nepritel3.is_deleted() and nepritel4.is_deleted() and nepritel5.is_deleted():
+    if nepritel1.is_deleted() and nepritel2.is_deleted() and nepritel3.is_deleted() \
+            and nepritel4.is_deleted() and nepritel5.is_deleted():
         lod.delete()
         basic.show_string("" + str(level))
         level = level + 1
         second_level()
+
+
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
+
 
 def on_button_pressed_b():
     lod.move(1)
+
+
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
 score = 0
@@ -79,7 +90,6 @@ nepritel3: game.LedSprite = None
 nepritel2: game.LedSprite = None
 nepritel1: game.LedSprite = None
 lod: game.LedSprite = None
-level = 0
 enemy_strela2 = None
 level = 1
 lod = game.create_sprite(2, 4)
@@ -96,6 +106,7 @@ nepritel5 = game.create_sprite(4, 0)
 TIME = 500
 SPEED = 0.5
 
+
 def on_forever():
     global enemy_strela
     enemy_strela = game.create_sprite(randint(0, 4), 0)
@@ -109,4 +120,6 @@ def on_forever():
         basic.show_string("GAME OVER!")
         basic.show_string(str(score))
     enemy_strela.delete()
+
+
 basic.forever(on_forever)
